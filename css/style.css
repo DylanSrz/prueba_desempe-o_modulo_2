@@ -1,0 +1,787 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;600&display=swap');
+
+/*
+    Archivo: style.css
+    Propósito: definir la apariencia visual de la landing page GARAGE band,
+    incluyendo estilos base, diseño responsivo y utilidades de accesibilidad.
+*/
+
+/* ============================================================
+   BASE — estilos generales (desktop primero)
+   ============================================================ */
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Variables de tema. Usadas en todo el sitio para mantener consistencia de color. */
+:root {
+    --primary: #b33838;
+    --secondary: #10B981;
+    --color-text: #ffffff;
+    --border: #752121;
+    --page: #1f1717;
+}
+
+body {
+    background: linear-gradient(135deg, #000000, #200808);
+    color: var(--color-text);
+}
+
+h1, h2, h3, h4 {
+    color: var(--color-text);
+}
+
+span {
+    color: var(--primary);
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+th {
+    background-color: var(--primary);
+    color: black;
+}
+
+button {
+    background-color: var(--primary);
+    color: black;
+    border-style: none;
+    border-radius: 5px;
+    padding: 7px 20px;
+    text-align: center;
+    box-shadow: 0 -4px 20px rgba(179, 56, 56, 0.9);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 50px;
+    text-shadow: 0 -4px 20px rgba(0, 0, 0, 0.795);
+}
+
+img {
+    box-shadow: 0 -4px 20px rgba(179, 56, 56, 0.9);
+}
+
+/* ---- Header ---- */
+
+header {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--primary);
+    padding: 20px 40px;
+    width: 100%;
+    box-shadow: 0 -4px 20px rgba(179, 56, 56, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.nav-bar {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-bar a {
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-bar a:hover {
+    color: var(--primary);
+}
+
+/* Botón hamburguesa: oculto en desktop */
+.hamburguesa {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.hamburguesa-linea {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-text);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animación X al abrir */
+.hamburguesa.activo .hamburguesa-linea:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburguesa.activo .hamburguesa-linea:nth-child(2) {
+    opacity: 0;
+}
+.hamburguesa.activo .hamburguesa-linea:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Overlay oscuro detrás del menú móvil: oculto por defecto */
+.nav-overlay {
+    display: none;
+}
+
+/* ---- Main ---- */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* ---- Hero ---- */
+
+.hero {
+    background-image:
+        linear-gradient(rgba(31, 23, 23, 0.5), rgba(179, 56, 56, 0.5)),
+        url(../assets/images/img-9.jpg);
+        background-size: cover;
+    height: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: start;
+    padding: 0 40px;
+}
+
+.hero p {
+    font-size: 20px;
+    text-shadow: 0 -4px 20px rgba(0, 0, 0, 0.795);
+}
+
+.hero button {
+    width: fit-content;
+    box-shadow: 0 -4px 20px rgb(0, 0, 0);
+}
+
+/* ---- Fechas / Tabla ---- */
+
+.fechas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1024px;
+    margin-top: 100px;
+    padding: 0 40px;
+}
+
+caption {
+    caption-side: top;
+    font-size: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 2px solid var(--border);
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+/* ---- Sobre el festival ---- */
+
+.sobre {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 100px;
+    padding: 0 40px;
+}
+
+.sobre article {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: start;
+}
+
+.sobre-img {
+    width: 20%;
+}
+
+.sobre img {
+    border-radius: 20px;
+}
+
+.sobre-texto {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    align-items: center;
+}
+
+.sobre-texto p {
+    width: 80%;
+}
+
+.sobre-icons {
+    width: 20%;
+    text-align: start;
+    justify-content: center;
+}
+
+.sobre-icons h4 {
+    color: var(--primary);
+    width: 100%;
+}
+
+.icon-list li {
+    margin: 15px 0;
+}
+
+.icon-list i {
+    color: var(--primary);
+    width: 20px;
+    justify-content: center;
+    text-align: center;
+    margin-right: 10px;
+}
+
+/* ---- Zonas temáticas ---- */
+
+.zonas {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1024px;
+    width: 100%;
+    align-items: center;
+    margin-top: 100px;
+    padding: 0 40px;
+}
+
+.categorias-festival {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.categoria {
+    width: 180px;
+    height: 140px;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.categoria:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 -4px 20px rgba(179, 56, 56, 0.9);
+}
+
+.categoria:hover svg {
+    transform: rotate(5deg) scale(1.1);
+}
+
+.icono svg {
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+.categoria p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.mundo  { background: #000000; color: var(--primary); }
+.cocina { background: #000000; color: var(--primary); }
+.postres { background: #000000; color: var(--primary); }
+.bebidas { background: #000000; color: var(--primary); }
+.musica { background: #000000; color: var(--primary); }
+
+/* ---- Galería ---- */
+
+.galería {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1024px;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.galería h2 {
+    text-align: center;
+}
+
+.galería button {
+    display: block;
+    margin: 0 auto;
+}
+
+.galería-carrusel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.galería-carrusel img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+/* ---- Footer ---- */
+
+footer {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 100px;
+    align-items: center;
+    background: linear-gradient(135deg, #00000071, #000000);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--primary);
+    padding: 20px 40px 10px 40px;
+    width: 100%;
+    box-shadow: 0 -4px 20px rgba(179, 56, 56, 0.9);
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.informacion h3 {
+    cursor: pointer;
+}
+
+.footer section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-principal p {
+    font-size: 14px;
+    width: 100%;
+    max-width: 1024px;
+    text-align: center;
+}
+
+.siguenos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.siguenos div {
+    display: flex;
+    gap: 15px;
+}
+
+.siguenos img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.newsletter form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#correo {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+#text-copy {
+    color: var(--primary);
+}
+
+/* ---- Utilidades ---- */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* ============================================================
+   TABLET — pantallas hasta 768px
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+    /* --- Header y menú hamburguesa --- */
+
+    header {
+        padding: 16px 20px;
+    }
+
+    /* El botón "COMPRAR ENTRADAS" se oculta en tablet/móvil para no saturar */
+    .btn-entradas {
+        display: none;
+    }
+
+    /* Mostrar el botón hamburguesa */
+    .hamburguesa {
+        display: flex;
+    }
+
+    /* El nav se convierte en panel lateral deslizante */
+    #nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;           /* empieza fuera de pantalla */
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
+        background: linear-gradient(160deg, #1f1717, #000000);
+        border-left: 1px solid var(--primary);
+        box-shadow: -8px 0 30px rgba(179, 56, 56, 0.9);
+        padding: 80px 30px 40px;
+        transition: right 0.35s ease;
+        z-index: 1050;
+        overflow-y: auto;
+    }
+
+    /* Clase que JS agrega al abrir */
+    #nav-menu.abierto {
+        right: 0;
+    }
+
+    .nav-bar {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav-bar li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-bar a {
+        display: block;
+        padding: 16px 0;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+
+    /* Overlay oscuro */
+    .nav-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;                /* shorthand para top/right/bottom/left: 0 */
+        background: rgba(0, 0, 0, 0.6);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+        z-index: 1040;
+    }
+
+    .nav-overlay.activo {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* --- Hero --- */
+
+    .hero {
+        height: auto;
+        min-height: 380px;
+        padding: 60px 0;
+    }
+
+    .hero-texto {
+        padding: 0 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    /* --- Fechas / Tabla --- */
+
+    .fechas {
+        margin-top: 60px;
+        padding: 0 20px;
+    }
+
+    /* Ocultar columnas marcadas con data-movil="ocultar" */
+    [data-movil="ocultar"] {
+        display: none;
+    }
+
+    th, td {
+        font-size: 13px;
+        padding: 10px 6px;
+    }
+
+    /* --- Sobre el festival --- */
+
+    .sobre {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin-top: 60px;
+        padding: 0 20px;
+    }
+
+    .sobre-img,
+    .sobre-texto,
+    .sobre-icons {
+        width: 100%;
+    }
+
+    .sobre-img {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sobre img {
+        max-width: 100%;
+        width: 260px;
+    }
+
+    .sobre-texto {
+        align-items: flex-start;
+    }
+
+    .sobre-texto p {
+        width: 100%;
+    }
+
+    /* --- Zonas temáticas: grid 2 columnas --- */
+
+    .zonas {
+        margin-top: 60px;
+        padding: 0 20px;
+        gap: 24px;
+    }
+
+    .categorias-festival {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        width: 100%;
+    }
+
+    .categoria {
+        width: 100%;
+        height: auto;
+        min-height: 130px;
+        padding: 18px 12px;
+    }
+
+    .icono svg {
+        width: 44px;
+        height: 44px;
+    }
+
+    .categoria p {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    /* --- Galería: grid 2 columnas --- */
+
+    .galería {
+        margin-top: 60px;
+        padding: 0 20px;
+        gap: 24px;
+    }
+
+    .galería-carrusel {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .galería-carrusel img {
+        max-width: 100%;
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+
+    /* --- Footer compacto: solo marca + redes + copyright --- */
+
+    footer {
+        margin-top: 60px;
+        padding: 30px 20px 16px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    /* Ocultar secciones secundarias del footer */
+    .enlaces,
+    .newsletter {
+        display: none;
+    }
+
+    .informacion {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .siguenos {
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+        justify-content: center;
+    }
+
+    .siguenos div {
+        gap: 20px;
+    }
+
+    .siguenos img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .footer-principal > p {
+        margin-top: 16px;
+        font-size: 12px;
+    }
+}
+
+
+/* ============================================================
+   MÓVIL PEQUEÑO — pantallas hasta 480px
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    /* Hero más compacto */
+    .hero {
+        min-height: 300px;
+        padding: 40px 0;
+    }
+
+    /* Tabla: texto más pequeño, columnas bien ajustadas */
+    th, td {
+        font-size: 12px;
+        padding: 8px 4px;
+    }
+
+    /* Zonas: 1 sola columna en pantallas muy estrechas */
+    .categorias-festival {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categoria {
+        min-height: 110px;
+        padding: 14px 10px;
+    }
+
+    .icono svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .categoria p {
+        font-size: 12px;
+    }
+
+    /* Galería: 1 columna en móvil muy pequeño */
+    .galería-carrusel {
+        grid-template-columns: 1fr;
+    }
+
+    .galería-carrusel img {
+        height: 180px;
+    }
+}

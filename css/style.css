@@ -163,7 +163,6 @@ main {
 
 .hero {
     background-image:
-        linear-gradient(rgba(31, 23, 23, 0.5), rgba(179, 56, 56, 0.5)),
         url(../assets/images/img-9.jpg);
         background-size: cover;
     height: 600px;
